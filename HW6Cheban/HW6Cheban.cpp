@@ -61,10 +61,7 @@ public:
         cout << "Model: " << model << endl << "Country: " << country << endl << "Year: " << year << endl << "Price: " << price << endl;
     }
     void Input() {
-        cout << "Input model: ";
-        cin >> model;
-        cout << endl << "Input country: ";
-        cin >> country;
+        //not possible to input a pointer. can't input model and country
         cout << endl << "Input year: ";
         cin >> year;
         cout << endl << "Input price: ";
@@ -87,7 +84,13 @@ int main()
     tesla.SetPrice(54130);
     tesla.Print();
 
-    Car bmw;
-    bmw.Print(); //prints only "Model: " without any variables, doesn't go to the end of the line
-    cout << bmw.GetYear();
+    //Car bmw;
+    //bmw.Print(); //prints only "Model: " without any variables, doesn't go to the end of the line
+    //cout << bmw.GetYear();
+
+    Car audi;
+    audi.Input();
+    cout << audi.GetYear() << endl;
+    cout << audi.GetPrice() << endl;
+    /*audi.Print();*/
 }

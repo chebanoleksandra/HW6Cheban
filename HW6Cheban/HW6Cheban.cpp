@@ -22,24 +22,23 @@ public:
         year = Year;
         price = Price;
     }
-    char* SetModel(const char* Model)
+    void SetModel(const char* Model)
     {
         model = new char[strlen(Model) + 1];
         strcpy_s(model, strlen(Model) + 1, Model);
     }
-    char* SeCountry(const char* Country)
+    void SetCountry(const char* Country)
     {
         country = new char[strlen(Country) + 1];
         strcpy_s(country, strlen(Country) + 1, Country);
     }
-    int SetYear(int Year)
+    void SetYear(int Year)
     {
         year = Year;
     }
-    double SetPrice(double Price)
+    void SetPrice(double Price)
     {
         price = Price;
-        return price;
     }
     char* GetModel()
     {
@@ -71,7 +70,7 @@ public:
     ~Car() { //doesn't work if bmw.Print() works
         delete[] model;
         delete[] country;
-        /*cout << "del" << endl; */ //visual check if compiler goes to ~Car()
+        cout << "del" << endl;  //visual check if compiler goes to ~Car()
     }
 };
 

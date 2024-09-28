@@ -24,11 +24,19 @@ public:
     }
     void SetModel(const char* Model)
     {
+        if (model != nullptr)
+        {
+            delete[] model;
+        }
         model = new char[strlen(Model) + 1];
         strcpy_s(model, strlen(Model) + 1, Model);
     }
     void SetCountry(const char* Country)
     {
+        if (country != nullptr)
+        {
+            delete[] country;
+        }
         country = new char[strlen(Country) + 1];
         strcpy_s(country, strlen(Country) + 1, Country);
     }
@@ -60,17 +68,35 @@ public:
         cout << "Model: " << model << endl << "Country: " << country << endl << "Year: " << year << endl << "Price: " << price << endl;
     }
     void Input() {
-        //not possible to input a pointer. can't input model and country
-        cout << endl << "Input year: ";
+        char buff[20];
+        cout << endl << "Input model: ";
+        cin >> buff;
+        if (model != nullptr)
+        {
+            delete[] model;
+        }
+        model = new char[strlen(buff) + 1];
+        strcpy_s(model, strlen(buff) + 1, buff);
+
+        cout << "Input country: ";
+        cin >> buff;
+        if (country != nullptr)
+        {
+            delete[] country;
+        }
+        country = new char[strlen(buff) + 1];
+        strcpy_s(country, strlen(buff) + 1, buff);
+
+        cout<< "Input year: ";
         cin >> year;
-        cout << endl << "Input price: ";
+        cout<< "Input price: ";
         cin >> price;
         cout << endl;
     }
     ~Car() { //doesn't work if bmw.Print() works
         delete[] model;
         delete[] country;
-        cout << "del" << endl;  //visual check if compiler goes to ~Car()
+        /*cout << "del" << endl;*/  //visual check if compiler goes to ~Car()
     }
 };
 
@@ -83,13 +109,11 @@ int main()
     tesla.SetPrice(54130);
     tesla.Print();
 
-    //Car bmw;
-    //bmw.Print(); //prints only "Model: " without any variables, doesn't go to the end of the line
-    //cout << bmw.GetYear();
+    Car bmw;
+   /* bmw.Print();*/ //prints only "Model: " without any variables, doesn't go to the end of the line
+    cout << bmw.GetYear() << endl;
 
     Car audi;
     audi.Input();
-    cout << audi.GetYear() << endl;
-    cout << audi.GetPrice() << endl;
-    /*audi.Print();*/
+    audi.Print();
 }
